@@ -1,23 +1,35 @@
-
-Total Distance:{{totalDistance +" km"}}
-Total Activities: {{totalActivities}}
-First Date {{firstDate | date:'longDate' }}
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Comments</th>
-      <th>Date</th>
-      <th>Distance</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let ac of activities">
-    <td>{{ac.name}}</td>
-    <td>{{ac.comments}}</td>
-    <td>{{ac.date | date:"dd-MM-yyyy"}}</td>
-    <td>{{ac.distance}}</td>
-  </tr>
-  </tbody>
-</table>
+<div class="row row-runs">
+    <h2 class="heading">My Runs</h2>
+    <hr />
+    <div class="summary">
+      Total Activities:
+      <p class="totals">{{ totalActivities }}</p>
+      Total Kilometers:
+      <p class="totals">{{ totalDistance }}</p>
+      Started At: 
+      <p class="totals">{{ firstDate | date: 'longDate'}}</p>
+    </div>
+    <hr />
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Comments</th>
+          <th>Date</th>
+          <th>Distance</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let activity of activities">
+            <td>
+                <a [routerLink] ="['/activity', activity.id]">
+                  {{ activity.name }}
+                </a>
+              </td>
+          <td>{{ activity.comments }}</td>
+          <td>{{ activity.date | date:"yyyy-MM-dd"}}</td>
+          <td>{{ activity.distance }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
